@@ -8,6 +8,7 @@ class MainTime {
         Time t2 = new Time(1, 40, 5);
         System.out.println(t2.toString().equals("01:40:05"));
         Time t3 = t1.plus(t2);
+        System.out.println(t3.second);
         System.out.println(t3.toString().equals("01:40:05"));
         System.out.println(t3.hours() == 1);
         System.out.println(t3.minutes() == 40);

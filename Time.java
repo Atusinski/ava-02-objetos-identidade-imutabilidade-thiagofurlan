@@ -1,108 +1,106 @@
 public final class Time {
 
-    private final int hour;
-    private final int minute;
-    private final int second;
+    final int second;
 
     Time(int h, int m, int s) {
-        this.hour = h;
-        this.minute = m;
-        this.second = s;
+        this.second = (h*3600) + (m*60) + s;
     }
 
     Time(int h, int m) {
-        this.hour = h;
-        this.minute = m;
-        this.second = 0;
+        this.second = (h*3600) + (m*60);
     }
 
     Time(int h) {
-        this.hour = h;
-        this.minute = 0;
-        this.second = 0;
+        this.second = (h*3600);
     }
 
     Time() {
-        this.hour = 0;
-        this.minute = 0;
+        this.second = 0;
+    }
+
+    Time(double s) {
         this.second = 0;
     }
 
     public Time plus (Time t) {
-        int h = this.hour + t.hour;
-        int m = this.minute + t.minute;
-        int s = this.second + t.second;
-        return this.format(h, m, s);
+        return new Time(this.second + t.second);
     }
 
     public Time plusHours (int h) {
-        return this.format(this.hour + h, this.minute, this.second);
+        return new Time(this.second + (h*3600));
     }
 
     public Time plusMinutes (int m) {
-        return this.format(this.hour, this.minute + m, this.second);
+        return new Time(this.second + (m*60));
     }
 
     public Time plusSeconds (int s) {
-        return this.format(this.hour, this.minute, this.second + s);
+        return new Time(this.second + s);
     }
 
     public Time minus (Time t) {
-        int h = this.hour - t.hour;
-        int m = this.minute - t.minute;
-        int s = this.second - t.second;
-        return this.format(h, m, s);
+        return new Time(this.second - t.second);
     }
 
     public Time minusHours (int h) {
-        return this.format(this.hour - h, this.minute, this.second);
+        return new Time(this.second - (h*3600));
     }
 
     public Time minusMinutes (int m) {
-        return this.format(this.hour, this.minute - m, this.second);
+        return new Time(this.second - (m*60));
     }
 
     public Time minusSeconds (int s) {
-        return this.format(this.hour, this.minute, this.second - s);
+        return new Time(this.second - s);
     }
 
     public int hours() {
-        return this.hour;
+        int h = this.second / 3600;
+        if (h > 23) h %= 24;
+        if (h < 0) h = 24 + h;
+        return h;
     }
 
     public int minutes() {
-        return this.minute;
+        int m = this.second / 60;
+        if (m > 59) {
+            //h += m / 60;
+            m %= 60;
+        }
+        return m;
     }
 
     public int seconds() {
-        return this.second;
+        int s = this.second;
+        if (s > 59) {
+            //m += s / 60;
+            s %= 60;
+        }
+        return s;
     }
 
     public boolean isMidDay() {
-        return (this.hour == 12 && this.minute == 0 && this.second == 0);
+        return (this.hours() == 12 && this.minutes() == 0 && this.seconds() == 0);
     }
 
     public boolean isMidNight() {
-        return (this.hour == 0 && this.minute == 0 && this.second == 0);
+        return (this.hours() == 0 && this.minutes() == 0 && this.seconds() == 0);
     }
 
     public Time tick() {
-        int h = this.hour;
-        int m = this.minute;
-        int s = this.second + 1;
-        return this.format(h, m, s);
+        return new Time(this.second + 1);
     }
 
     public Time shift() {
-        return this.format(this.hour + 12, this.minute, this.second);
+        return new Time(this.hours() + 12);
     }
 
     @Override
     public String toString() {
         String s = "";
-        s += (this.hour < 10) ? "0" + this.hour + ":" : this.hour + ":";
-        s += (this.minute < 10) ? "0" + this.minute + ":" : this.minute + ":";
-        s += (this.second < 10) ? "0" + this.second : this.second;
+        s += (this.hours() < 10) ? "0" + this.hours() + ":" : this.hours() + ":";
+        s += (this.minutes() < 10) ? "0" + this.minutes() + ":" : this.minutes() + ":";
+        s += (this.seconds() < 10) ? "0" + this.seconds() : this.seconds();
         return s;
     }
 
@@ -110,7 +108,7 @@ public final class Time {
     public boolean equals(Object o) {
         if (this == o) return true;
         Time t = (Time) o;
-        return (this.hour == t.hour && this.minute == t.minute && this.second == t.second);
+        return (this.hours() == t.hours() && this.minutes() == t.minutes() && this.seconds() == t.seconds());
     }
 
     private Time format(int h, int m, int s) {
