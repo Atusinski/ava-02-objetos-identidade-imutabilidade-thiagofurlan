@@ -66,8 +66,10 @@ class Coordenada {
 
     @Override
     public String toString() {
-        String lat = String.format("%.7f°, ", this.latitude);
-        String lon = String.format("%.7f°", this.longitude);       
+        boolean a = (this.latitude / (int)this.latitude) > 1;
+        boolean b = (this.longitude / (int)this.longitude) > 1;
+        String lat = (a) ? this.latitude + "°, " : this.latitude + "000000°, ";
+        String lon = (b) ? this.longitude + "°"  : this.longitude + "000000°";
         return lat + lon;
     }
 

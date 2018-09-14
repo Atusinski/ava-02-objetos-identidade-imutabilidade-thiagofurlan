@@ -99,12 +99,12 @@ class MainCoordenada {
 		System.out.println(c3.toString().equals("-90.0000000°, -180.0000000°"));
 		System.out.println(out.toString().equals("-50.0000000°, -80.0000000°"));
 		System.out.println(q.toString().equals("10.0000000°, -180.0000000°"));
-		System.out.println(r); // -30.0000000°, -70.0000000°
+		// System.out.println(r); // -30.0000000°, -70.0000000°
 		System.out.println(r.toString().equals("-30.0000000°, -70.0000000°"));
 
 		Coordenada t = new Coordenada(-32.0714021, -52.1425059);
 		// https://www.google.com.br/maps/@-32.0714021,-52.1425059,13z?hl=pt-BR
-		System.out.println(t);; // -32.0714021°, -52.1425059°
+		// System.out.println(t); // -32.0714021°, -52.1425059°
 		System.out.println(t.toString().equals("-32.0714021°, -52.1425059°"));
 
 		// equals:
