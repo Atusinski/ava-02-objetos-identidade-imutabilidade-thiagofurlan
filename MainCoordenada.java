@@ -117,12 +117,11 @@ class MainCoordenada {
 		System.out.println(y.equals(r) == false);
 		// desafio: escrever método que retorna link para Google Maps!
 		// Coordenada t = new Coordenada(37.402473, -122.3212843);
-		//	String url = t.googleMaps();
-		//	System.out.println(url.equals("https://www.google.com.br/maps/@37.402473,-122.3212843,10z?hl=pt-BR"));
+		// String url = t.googleMaps();
+		// System.out.println(url.equals("https://www.google.com.br/maps/@37.402473,-122.3212843,10z?hl=pt-BR"));
 		// descomente para ver se funciona (não testei)
 		// String url = "";
-		// Runtime.getRuntime().exec("ls");
-		// tente outro navegador, no windows tente "start " + url
+		// Runtime.getRuntime().exec("code  " + url);
 
 	}
 

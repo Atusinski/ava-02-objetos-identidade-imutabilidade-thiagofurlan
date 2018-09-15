@@ -19,39 +19,47 @@ public final class Time {
     }
 
     Time(double s) {
-        this.second = 0;
+        this.second = (int)s;
     }
 
     public Time plus (Time t) {
-        return new Time(this.second + t.second);
+        double s = this.second + t.second;
+        return new Time(s);
     }
 
     public Time plusHours (int h) {
-        return new Time(this.second + (h*3600));
+        double s = this.second + (h*3600);
+        return new Time(s);
     }
 
     public Time plusMinutes (int m) {
-        return new Time(this.second + (m*60));
+        double s = this.second + (m*60);
+        return new Time(s);
     }
 
-    public Time plusSeconds (int s) {
-        return new Time(this.second + s);
+    public Time plusSeconds (int second) {
+        double s = this.second + second;
+        return new Time(s);
     }
 
     public Time minus (Time t) {
-        return new Time(this.second - t.second);
+        double s = this.second - t.second;
+        return new Time(s);
     }
 
     public Time minusHours (int h) {
-        return new Time(this.second - (h*3600));
+        double s = this.second - (h*3600);
+        return new Time(s);
     }
 
     public Time minusMinutes (int m) {
-        return new Time(this.second - (m*60));
+        double s = this.second - (m*60);
+        return new Time(s);
     }
 
-    public Time minusSeconds (int s) {
-        return new Time(this.second - s);
+    public Time minusSeconds (int second) {
+        double s = this.second - second;
+        return new Time(s);
     }
 
     public int hours() {
@@ -64,7 +72,7 @@ public final class Time {
     public int minutes() {
         int m = this.second / 60;
         if (m > 59) {
-            //h += m / 60;
+           // h += m / 60;
             m %= 60;
         }
         return m;
@@ -88,7 +96,8 @@ public final class Time {
     }
 
     public Time tick() {
-        return new Time(this.second + 1);
+        double s = this.second + 1;
+        return new Time(s);
     }
 
     public Time shift() {
@@ -111,7 +120,10 @@ public final class Time {
         return (this.hours() == t.hours() && this.minutes() == t.minutes() && this.seconds() == t.seconds());
     }
 
-    private Time format(int h, int m, int s) {
+    private Time format() {
+        int h = hours();
+        int m = minutes();
+        int s = seconds();
         if (s > 59) {
             m += s / 60;
             s %= 60;
