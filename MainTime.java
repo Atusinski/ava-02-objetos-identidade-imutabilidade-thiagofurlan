@@ -34,12 +34,12 @@ class MainTime {
         System.out.println(t9.toString().equals("19:23:18"));
         Time t10 = t9.plusHours(-1).plusMinutes(-1).plusSeconds(-1);
         System.out.println(t10.toString().equals("18:22:17"));
-        Time t11 = t10.minusHours(2).minusMinutes(2).minusSeconds(2); // 58815 s
+        Time t11 = t10.minusHours(2).minusMinutes(2).minusSeconds(2);
         System.out.println(t11.toString().equals("16:20:15"));
-        Time t12 = t11.minusHours(-5); // 76815
+        Time t12 = t11.minusHours(-5);
         System.out.println(t12.toString().equals("21:20:15"));
-        Time t13 = t11.minus(t12); // 58815 - 76815
-        System.out.println(t13.toString().equals("19:00:00")); // problema
+        Time t13 = t11.minus(t12);
+        System.out.println(t13.toString().equals("19:00:00"));
         System.out.println(t13.isMidDay() == false);
         Time t14 = t13.minus(t13);
         System.out.println(t14.toString().equals("00:00:00"));
@@ -57,7 +57,7 @@ class MainTime {
         Time t19 = t18.tick().tick().tick();
         System.out.println(t19.toString().equals("03:40:04"));
         Time t20 = t19.plusHours(50).plusMinutes(50).minusSeconds(50).tick().shift();
-        System.out.println(t20.toString().equals("18:30:15"));
+        System.out.println(t20.toString().equals("18:29:15"));
 
     }
     
