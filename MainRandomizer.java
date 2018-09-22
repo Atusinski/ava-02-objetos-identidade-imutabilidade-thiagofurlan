@@ -1,12 +1,11 @@
 class MainRandomizer {
-	
+
 	public static void main(String[] args) {
-	
+
 		// como o teste não é preciso, precisamos gerar 1 milhão de vezes
 		// e checar se os números gerados estão no intervalo:
 		System.out.println("Testando intervalo ...");
 		Randomizer randomizer1 = new Randomizer();
-		System.out.println(randomizer1.next());
 
 		for (int i = 0; i < 1000000; i++) {
 			double n = randomizer1.next();
@@ -27,12 +26,11 @@ class MainRandomizer {
 			int n = randomizer3.nextInt(17);
 			if (n < 0 || n > 17) System.out.println("false: " + n);
 		}
-		// for (int i = 0; i < 1000000; i++) {
-		// 	int n = randomizer3.nextInt(17, 51);
-		// 	if (n < 17 || n > 51) System.out.println("false: " + n);
-		// }
+		for (int i = 0; i < 1000000; i++) {
+			int n = randomizer3.nextInt(17, 51);
+			if (n < 17 || n > 51) System.out.println("false: " + n);
+		}
 
-			
 	}
-	
+
 }
